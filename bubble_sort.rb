@@ -1,19 +1,17 @@
 def bubble_sort(arr)
-  num_of_times=0
-  while num_of_times < arr.length
-    arr.each_with_index do |item, index|
-      if (index + 1)== arr.length
-        next
-      else
-        if item > arr[index+1]
-          arr[index] = arr[index+1]
-          arr[index+1] = item
-        end
+  for i in 0...arr.length
+    sorted = true
+
+    for k in 0...(arr.length - i - 1)
+      if arr[k] > arr[k + 1]
+        arr[k], arr[k + 1] = arr[k + 1], arr[k]
+        sorted = false
       end
     end
-    num_of_times += 1
-    p arr
+
+    break if sorted
   end
+  arr
 end
 
-bubble_sort([12,8,7,3,2,1])
+p bubble_sort([12,8,7,3,2,1])
